@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>900</width>
+    <height>900</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Fractal Generator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="baseSize">
+    <size>
+     <width>900</width>
+     <height>900</height>
+    </size>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="toolTip">
+         <string>Select the fractal you want to draw</string>
+        </property>
+        <property name="text">
+         <string>Fractal:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Select the fractal you want to draw</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Levy Curve (Single)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Levy Curve (Mirrored)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>T-Square</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Koch Curve (Single)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Koch Curve (Mirrored)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Koch Curve Snowflake</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Koch Curve Snowflake (Inverse)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sierpinski Triangle</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sierpinski Carpet</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="toolTip">
+         <string>Select the amount of iterations for fractal</string>
+        </property>
+        <property name="text">
+         <string>Iterations:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="horizontalSlider">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="toolTip">
+         <string>Select the amount of iterations for the fractal</string>
+        </property>
+        <property name="maximum">
+         <number>16</number>
+        </property>
+        <property name="pageStep">
+         <number>3</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox">
+        <property name="toolTip">
+         <string>Update the OpenGL widget automatically</string>
+        </property>
+        <property name="text">
+         <string>Auto Draw</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Update the OpenGL widget</string>
+        </property>
+        <property name="text">
+         <string>&amp;Draw</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="toolTip">
+         <string>Close the program</string>
+        </property>
+        <property name="text">
+         <string>&amp;Quit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="GLWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>800</width>
+        <height>800</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>Change_Iterator(int)</slot>
+    <slot>Change_Fractal(int)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_3</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>393</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>790</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>767</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>857</x>
+     <y>24</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>896</x>
+     <y>11</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>widget</receiver>
+   <slot>Change_Iterator(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>331</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>335</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>widget</receiver>
+   <slot>Change_Fractal(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>148</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>172</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Change_Limit(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>16</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>258</x>
+     <y>6</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Auto_Draw(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>369</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Change_Limit(int)</slot>
+  <slot>Auto_Draw(int)</slot>
+ </slots>
+</ui>
